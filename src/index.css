@@ -363,6 +363,8 @@ body {
   border-color: var(--primary);
 }
 
+/* Adiciona uma linha e um espaçamento acima dos botões */
+/* Você provavelmente tem algo assim: */
 .post-actions {
   display: flex;
   justify-content: space-between;
@@ -386,10 +388,6 @@ body {
   background-color: var(--bg-light);
 }
 
-.post-actions button:last-child {
-  background-color: var(--primary);
-  color: white;
-}
 
 .post-actions button:last-child:hover {
   background-color: #166fe5;
@@ -564,9 +562,11 @@ body {
   padding-top: 60px;
 }
 
+/* Modifique para ficar assim */
 .profile-details h1 {
   font-size: 2.2rem;
   margin-bottom: 10px;
+  color: white; /* <-- Adicione esta linha */
 }
 
 .profile-details p {
@@ -599,11 +599,12 @@ body {
   background-color: var(--primary);
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 20px 20px;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s;
+  align-self: center; /
 }
 
 .edit-profile-btn:hover {
@@ -864,11 +865,14 @@ body {
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 120px);
+  height: 85vh; /* Altura mais flexível, 85% da altura da tela */
   background-color: var(--card-bg);
   border-radius: 10px;
   box-shadow: 0 2px 4px var(--shadow);
   overflow: hidden;
+  width: 80%; /* Define a largura para 80% do espaço disponível */
+  max-width: 1400px; /* Define um limite máximo de largura para telas grandes */
+  margin: 20px auto; /* Centraliza o chat na página e adiciona margem no topo/baixo */
 }
 
 .chat-header {
@@ -971,3 +975,267 @@ body {
 .message-input-form button:hover {
   background-color: #166fe5;
 }
+/* SUBSTITUA PELA VERSÃO ATUALIZADA */
+/* Você provavelmente tem algo assim: */
+.comment-preview-list {
+  padding-top: 15px;
+  margin-top: 15px;
+  border-top: 1px solid var(--border);
+}
+/* Garante que a seção completa tenha o mesmo espaçamento */
+.comment-section {
+  margin-top: 10px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+}
+.comment-list .comment-item img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+/* src/index.css */
+
+/* --- Variáveis Globais e Reset --- */
+:root {
+  --primary: #1877f2;
+  --secondary: #42b72a;
+  --bg-light: #f0f2f5;
+  --text-dark: #1c1e21;
+  --text-light: #65676b;
+  --card-bg: #ffffff;
+  --border: #dddfe2;
+  --shadow: rgba(0, 0, 0, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* --- Layout Principal --- */
+.main-content {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+/* --- Componentes Compartilhados (Cabeçalho, Sidebars) --- */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+  background-color: var(--card-bg);
+  box-shadow: 0 1px 2px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-light);
+  border-radius: 20px;
+  padding: 8px 15px;
+  width: 40%;
+}
+
+.search-container input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.user-info img, .post-header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logout-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.sidebar { flex: 0 0 250px; }
+.right-sidebar { flex: 0 0 280px; }
+.feed { flex: 1; }
+
+/* --- Estrutura dos Posts --- */
+.post {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 2px var(--shadow);
+  margin-bottom: 20px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.post-content {
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.post-actions button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-light);
+  transition: background-color 0.2s;
+}
+
+.post-actions button:hover {
+  background-color: var(--bg-light);
+}
+
+/* --- Seção de Comentários (Onde a mágica acontece) --- */
+
+/* Estilo para a pré-visualização e a lista completa */
+.comment-preview-list, .comment-list {
+  padding-top: 15px;
+}
+
+/* A caixa que envolve cada comentário individual */
+.comment-item {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* A imagem de perfil do comentário - AQUI ESTÁ A CORREÇÃO PRINCIPAL */
+.comment-item img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%; /* Faz a imagem ficar redonda */
+  object-fit: cover;
+  margin-top: 4px; /* Alinha melhor com o texto */
+}
+
+/* O balão com o conteúdo do comentário */
+.comment-item .comment-content {
+  background-color: var(--bg-light);
+  padding: 8px 12px;
+  border-radius: 18px;
+  width: fit-content;
+  max-width: 85%;
+}
+
+.comment-item .comment-content strong {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+
+.comment-item .comment-content p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  word-wrap: break-word; /* Garante que textos longos quebrem a linha */
+}
+
+/* Seção completa que abre ao clicar em "Comentar" */
+.comment-section {
+  margin-top: 10px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+}
+
+/* O formulário para digitar um novo comentário */
+.comment-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.comment-form img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background-color: var(--bg-light);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.comment-form input:focus {
+  border-color: var(--primary);
+}
+
+.comment-form button {
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px;
+}
+
+/* Outros estilos (Login, ProfilePage, etc.) que você já tinha e estão funcionando */
+/* ... (Seu CSS para .login-container, .profile-page, .chat-page, etc. continua aqui) ... */
